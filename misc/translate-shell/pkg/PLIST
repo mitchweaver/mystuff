@@ -1,0 +1,2 @@
+@bin bin/trans
+@man man/man1/trans.1
