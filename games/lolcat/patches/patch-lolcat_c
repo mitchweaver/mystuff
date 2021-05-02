@@ -1,0 +1,19 @@
+$OpenBSD$
+
+Index: lolcat.c
+--- lolcat.c.orig
++++ lolcat.c
+@@ -95,6 +95,13 @@ static wint_t helpstr_hack(FILE * _ignored)
+ 
+ int main(int argc, char** argv)
+ {
++
++    if (pledge("stdio rpath", NULL) == -1)
++    {
++        fprintf (stderr, "%s: pledge\n", "lolcat");
++        exit ( 1 );
++    }
++
+     char* default_argv[] = { "-" };
+     int cc = -1, i, l = 0;
+     wint_t c;
