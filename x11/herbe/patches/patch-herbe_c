@@ -1,0 +1,27 @@
+$OpenBSD$
+
+Index: herbe.c
+--- herbe.c.orig
++++ herbe.c
+@@ -81,6 +81,13 @@ void expire(int sig)
+ 
+ int main(int argc, char *argv[])
+ {
++
++	if (pledge("stdio rpath wpath cpath unix", NULL) == -1)
++	{
++		fprintf (stderr, "%s: pledge\n", "herbe");
++		exit ( 1 );
++	}
++
+ 	if (argc == 1)
+ 	{
+ 		sem_unlink("/herbe");
+@@ -217,4 +224,5 @@ int main(int argc, char *argv[])
+ 	XCloseDisplay(display);
+ 
+ 	return exit_code;
+-}
+\ No newline at end of file
++}
++

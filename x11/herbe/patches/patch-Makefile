@@ -1,0 +1,21 @@
+$OpenBSD$
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,4 +1,5 @@
+-CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -I/usr/include/freetype2 -pthread
++CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -pthread
++LDFLAGS = -L/usr/X11R6/lib
+ 
+ PREFIX ?= /usr/local
+ CC ?= cc
+@@ -9,7 +10,7 @@ config.h: config.def.h
+ 	cp config.def.h config.h
+ 
+ herbe: herbe.c config.h
+-	$(CC) herbe.c $(CFLAGS) -o herbe
++	$(CC) herbe.c $(CFLAGS) $(LDFLAGS) -o herbe
+ 
+ install: herbe
+ 	mkdir -p ${DESTDIR}${PREFIX}/bin
