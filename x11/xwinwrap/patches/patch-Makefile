@@ -1,0 +1,28 @@
+$OpenBSD$
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,16 +1,16 @@
+-CC = gcc
+-CFLAGS= -g -Wall
+-INCLUDE = -L /usr/lib/x86_64-linux-gnu
++PREFIX = /usr/local
++CFLAGS = -I/usr/X11R6/include -Wall
++LDFLAGS = -L/usr/X11R6/lib
+ LIBS = -lX11 -lXext -lXrender
+ 
+ all:
+-	${CC} xwinwrap.c ${CFLAGS} ${INCLUDE} ${LIBS} -o xwinwrap
++	${CC} xwinwrap.c ${CFLAGS} ${LDFLAGS} ${LIBS} -o xwinwrap
+ 
+ install:
+-	install xwinwrap '/usr/local/bin'
++	install -Dm0755 xwinwrap ${DESTDIR}${PREFIX}/bin
+ 
+ uninstall:
+-	rm -f '/usr/local/bin/xwinwrap'
++	rm -f ${DESTDIR}${PREFIX}/bin/xwinwrap
+ 
+ clean:
+ 	rm -f xwinwrap
