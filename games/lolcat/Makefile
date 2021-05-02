@@ -1,5 +1,5 @@
 DISTNAME = lolcat-1.2
-COMMENT = high performance implementation of lolcat
+COMMENT = high performance implementation of lolcat, uses pledge(2)
 HOMEPAGE = https://github.com/jaseg/lolcat
 MAINTAINER = Mitch Weaver <mitch@wvr.sh>
 CATEGORIES = games
