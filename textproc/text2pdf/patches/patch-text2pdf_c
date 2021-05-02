@@ -1,0 +1,17 @@
+$OpenBSD$
+
+Index: text2pdf.c
+--- text2pdf.c.orig
++++ text2pdf.c
+@@ -352,6 +352,11 @@ void ShowHelp(){
+ }
+ 
+ int main(int argc, char **argv){
++  if (pledge("stdio", NULL) == -1)
++  {
++      fprintf (stderr, "%s: pledge\n", "PROGRAM_NAME");
++      exit ( 1 );
++  }
+   int i = 1;
+   int tmp, landscape = 0;
+   char *ifilename = NULL;
