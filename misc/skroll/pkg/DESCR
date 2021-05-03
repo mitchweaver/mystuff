@@ -1,0 +1,3 @@
+Skroll is a small utility that you can use to make a text scroll.
+Pipe text to it, and it will scroll a given number of letters from
+right to left.

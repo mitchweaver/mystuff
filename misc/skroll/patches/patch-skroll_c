@@ -1,0 +1,17 @@
+$OpenBSD$
+
+Index: skroll.c
+--- skroll.c.orig
++++ skroll.c
+@@ -122,6 +122,11 @@ const char *bufferize (FILE *stream)
+ 
+ int main (int argc, char **argv)
+ {
++    if (pledge("stdio", NULL) == -1)
++    {
++        fprintf (stderr, "%s: pledge\n", "skroll");
++        exit ( 1 );
++    }
+     char ch;
+     const char *buf = NULL;
+ 
